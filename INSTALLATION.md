@@ -182,15 +182,6 @@ uv run python scriptss/validate_content.py
 
 
 
-
-
-
-
-
-
-
-
-
 # Análisis y decisiones tomadas
 
 ## Objetivo de la solución
@@ -377,4 +368,6 @@ Forma más facil de implementar la BD vectorial es:
 - esquema: ids estables, metadata de negocio y texto a buscar;
 - operación: `upsert` idempotente + filtros por metadata;
 - validación: recuento, visibilidad, ranking y métricas.
+
+
 
