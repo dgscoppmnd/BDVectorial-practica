@@ -1,4 +1,4 @@
-SHELL := /usr/bin/env bash
+﻿SHELL := /usr/bin/env bash
 .ONESHELL:
 
 PROJECT_ROOT := $(shell cd "$(dir $(realpath $(lastword $(MAKEFILE_LIST))))" && pwd)
@@ -16,11 +16,28 @@ setup:
 		cp .env.example .env
 	fi
 	uv run python -m ipykernel install --user \
-		--name faiss-ann-search \
-		--display-name "Python (BBDD Vectoriales · Sesión 2)"
+		--name aurum-bdv \
+		--display-name "Python (Aurum BDV)"
 	uv run python scriptss/validate_content.py --quick
-	echo "Entorno preparado. Ejecuta 'make lab'."
+	echo "Entorno preparado. Levanta Qdrant con 'make qdrant' y ejecuta 'make lab'."
+
+qdrant:
+	cd "$(PROJECT_ROOT)"
+	docker compose up -d
+	curl -s http://localhost:6333/readyz && echo " · Qdrant listo en http://localhost:6333"
 
 lab:
 	cd "$(PROJECT_ROOT)"
 	uv run jupyter lab
+
+test:
+	cd "$(PROJECT_ROOT)"
+	uv run python -m pytest tests -q
+
+validate:
+	cd "$(PROJECT_ROOT)"
+	uv run python scriptss/validate_content.py
+
+informe:
+	cd "$(PROJECT_ROOT)"
+	uv run python scriptss/generar_informe.py

@@ -4,3 +4,8 @@ __pycache__/
 .ipynb_checkpoints/
 .env
 .DS_Store
+.cache_embeddings/
+qdrant_storage/
+qdrant_local/
+*.log
+.pytest_cache/

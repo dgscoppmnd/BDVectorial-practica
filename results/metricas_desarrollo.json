@@ -1,14 +1,148 @@
 {
   "lexical": {
-    "ndcg_at_10": 0.8172634025173084,
-    "recall_at_10": 0.2015625,
-    "mrr_at_10": 0.8928571428571428
+    "ndcg_at_10": 0.40284864343251775,
+    "recall_at_10": 0.17050955876560714,
+    "mrr_at_10": 0.765625
   },
   "dense": {
-    "ndcg_at_10": 0.7837052304160472,
-    "recall_at_10": 0.19687500000000002,
-    "mrr_at_10": 0.78125
+    "ndcg_at_10": 0.5624739618178256,
+    "recall_at_10": 0.22148463655520106,
+    "mrr_at_10": 0.75
   },
-  "latency_p50_ms": 9.673262499973134,
-  "latency_p95_ms": 9.673262499973134
+  "latency_p50_ms": 19.49,
+  "latency_p95_ms": 33.69,
+  "latencia_detalle": {
+    "protocolo": {
+      "calentamiento": 3,
+      "repeticiones": 20,
+      "consultas": 8,
+      "hnsw_ef": 128
+    },
+    "codificacion_consulta": {
+      "p50_ms": 9.77,
+      "p95_ms": 13.25,
+      "n_muestras": 160
+    },
+    "busqueda_motor": {
+      "p50_ms": 6.46,
+      "p95_ms": 24.15,
+      "n_muestras": 160
+    },
+    "total": {
+      "p50_ms": 19.49,
+      "p95_ms": 33.69,
+      "n_muestras": 160
+    }
+  },
+  "fidelidad_ann": [
+    {
+      "hnsw_ef": 4,
+      "recall@10 vs oráculo (medio)": 1.0,
+      "recall@10 (peor consulta)": 1.0,
+      "latencia p50 (ms)": 14.73,
+      "latencia p95 (ms)": 25.13
+    },
+    {
+      "hnsw_ef": 16,
+      "recall@10 vs oráculo (medio)": 1.0,
+      "recall@10 (peor consulta)": 1.0,
+      "latencia p50 (ms)": 15.45,
+      "latencia p95 (ms)": 26.82
+    },
+    {
+      "hnsw_ef": 64,
+      "recall@10 vs oráculo (medio)": 1.0,
+      "recall@10 (peor consulta)": 1.0,
+      "latencia p50 (ms)": 15.36,
+      "latencia p95 (ms)": 27.16
+    },
+    {
+      "hnsw_ef": 128,
+      "recall@10 vs oráculo (medio)": 1.0,
+      "recall@10 (peor consulta)": 1.0,
+      "latencia p50 (ms)": 15.53,
+      "latencia p95 (ms)": 26.82
+    },
+    {
+      "hnsw_ef": 256,
+      "recall@10 vs oráculo (medio)": 1.0,
+      "recall@10 (peor consulta)": 1.0,
+      "latencia p50 (ms)": 5.25,
+      "latencia p95 (ms)": 26.84
+    }
+  ],
+  "comparacion_modelos": [
+    {
+      "modelo": "minilm",
+      "nombre": "sentence-transformers/all-MiniLM-L6-v2",
+      "ndcg@10": 0.482,
+      "recall@10": 0.2744,
+      "mrr@10": 0.7812,
+      "coste_codificacion_s_1500_docs": 0.0
+    },
+    {
+      "modelo": "e5",
+      "nombre": "intfloat/multilingual-e5-small",
+      "ndcg@10": 0.7151,
+      "recall@10": 0.3159,
+      "mrr@10": 0.9062,
+      "coste_codificacion_s_1500_docs": 0.0
+    }
+  ],
+  "comparacion_composiciones": [
+    {
+      "composicion": "c1_titulo",
+      "ndcg@10": 0.6024,
+      "recall@10": 0.2898,
+      "mrr@10": 0.775
+    },
+    {
+      "composicion": "c2_titulo_atributos",
+      "ndcg@10": 0.6986,
+      "recall@10": 0.3497,
+      "mrr@10": 0.8438
+    },
+    {
+      "composicion": "c3_completo",
+      "ndcg@10": 0.7151,
+      "recall@10": 0.3159,
+      "mrr@10": 0.9062
+    }
+  ],
+  "duplicados_regla": {
+    "umbral": 0.9093,
+    "margen_min": 0.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "protocolo": {
+    "corpus": 15000,
+    "consultas_desarrollo": 8,
+    "k": 10,
+    "seed": 42,
+    "modelo": "intfloat/multilingual-e5-small",
+    "composicion_texto": "c3_completo",
+    "motor": "Qdrant (servidor)",
+    "coleccion": "aurum_catalogo",
+    "hnsw": {
+      "m": 16,
+      "ef_construct": 128,
+      "ef_busqueda": 128
+    },
+    "entorno": {
+      "python": "3.14.3",
+      "plataforma": "Windows-11-10.0.26200-SP0",
+      "cpu": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+      "nucleos": 16,
+      "paquetes": {
+        "sentence-transformers": "5.7.0",
+        "qdrant-client": "1.20.0",
+        "torch": "2.15.0",
+        "numpy": "2.5.4",
+        "pandas": "3.1.0",
+        "scikit-learn": "1.8.0"
+      }
+    }
+  }
 }

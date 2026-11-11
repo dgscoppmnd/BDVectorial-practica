@@ -10,14 +10,24 @@ dependencies = [
     "python-dotenv>=1.0",
     "ipykernel>=7.0,<8",
     "jupyterlab>=4.0,<5",
+    "sentence-transformers>=3.0,<6",
+    "qdrant-client>=1.12,<2",
+    "plotly>=5.24,<7",
 ]
 
 [project.optional-dependencies]
-all = [
-    "sentence-transformers>=2.0,<3",
-    "faiss-cpu>=1.7.4,<2.0",
+dev = [
+    "pytest>=8.0,<9",
+    "fpdf2>=2.7,<3",
 ]
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
